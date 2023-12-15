@@ -104,7 +104,7 @@ public class CartServcieImpl implements CartService {
 	}
 
 	@Override
-	public String deleteProductCart(Integer productId , Integer userId) {
+	public String deleteProductFromUserCartUsingUserId(Integer productId , Integer userId) {
 		// TODO Auto-generated method stub
 		Cart userCart  = cartRepository.findByUserId(userId);
 		

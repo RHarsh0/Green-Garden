@@ -18,7 +18,7 @@ import com.example.model.Planter;
 import com.example.service.PlanterService;
 
 @RestController
-public class PlanterContorller {
+public class PlanterContorller {				// Planters controller
 
 	private PlanterService planterService;
 	
@@ -34,30 +34,30 @@ public class PlanterContorller {
 //	}
 
 
-	@DeleteMapping("/planters/{planterId}")
+	@DeleteMapping("/planters/{planterId}")					// Delete the planter by planter id
 	public ResponseEntity<String> deletePlaterById(@PathVariable Integer planterId) {
 		return new ResponseEntity<String>(planterService.deletePlanter(planterId), HttpStatus.OK);
 	}
 
-	@GetMapping("/planters/{planterId}")
+	@GetMapping("/planters/{planterId}")					// get the planter by planter id
 	public ResponseEntity<Planter> viewPlanterById(@PathVariable Integer planterId) {
 		return new ResponseEntity<Planter>(planterService.viewPlanterById(planterId), HttpStatus.ACCEPTED);
 	}
 
 	@GetMapping("/planters")
-	public ResponseEntity<List<Planter>> viewAllPlanter(
+	public ResponseEntity<List<Planter>> viewAllPlanter(			// get the list of all the planters available
 			@RequestParam(defaultValue = "0", required = false) Integer page,
 			@RequestParam(defaultValue = "10", required = false) Integer size,
 			@RequestParam(required = false) Map<String,String> map) {
 		return new ResponseEntity<List<Planter>>(planterService.viewAllPlanter(page,size,map), HttpStatus.ACCEPTED);
 	}
 	
-	@GetMapping("/plantersBy/{shape}")
+	@GetMapping("/plantersBy/{shape}")				// show all the planters with their shapes
 	public ResponseEntity<List<Planter>> ViewPlanterByPlanterShape(@PathVariable String shape){
 		return new ResponseEntity<List<Planter>>(planterService.ViewPlanterByPlanterShape(shape),HttpStatus.ACCEPTED);
 	}
 	
-	@GetMapping("/planters/{min}/{max}")
+	@GetMapping("/planters/{min}/{max}")				// show all the planters within the price range
 	public ResponseEntity<List<Planter>> viewAllPlantersbetweenRange(@PathVariable Double min,@PathVariable Double max){
 		return new ResponseEntity<List<Planter>>(planterService.viewAllPlantersbetweenRange(min, max),HttpStatus.ACCEPTED);
 	}

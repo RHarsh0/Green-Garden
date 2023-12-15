@@ -16,7 +16,7 @@ public class AuthResponse {
 //	private String email;
 //	private String mobileNumber;
 	
-	Map<String, String> user = new HashMap<>();
+	 Map<String, String> user = new HashMap<>();
 	private String jwt;
 	private String message;
 	

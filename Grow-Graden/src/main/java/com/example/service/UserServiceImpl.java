@@ -114,12 +114,6 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User findUseById(Long userId) throws UserException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public User findUserProfileByJwt(String jwt) throws UserException {
 		// TODO Auto-generated method stub
 		try {

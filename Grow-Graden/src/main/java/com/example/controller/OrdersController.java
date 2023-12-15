@@ -19,37 +19,37 @@ import com.example.service.OrderServiceInteface;
 
 @RestController
 @RequestMapping("/orders")
-public class OrdersController {
+public class OrdersController {							// Orders can be controlled from the following endpoints
 	
-	private OrderServiceInteface orderServiceInteface;
+	private OrderService orderService;
 
 	@Autowired
-	public OrdersController(OrderServiceInteface orderServiceInteface) {
-		this.orderServiceInteface = orderServiceInteface;
+	public OrdersController(OrderService orderService) {
+		this.orderService = orderService;
 	}
 
 	@PostMapping("/{userId}")
-	public ResponseEntity<Cart> addOrdersFromCart(@PathVariable Integer userId){
-		return new ResponseEntity<Cart>(orderServiceInteface.addOrdersFromCart(userId),HttpStatus.OK);
+	public ResponseEntity<Cart> addOrdersFromCart(@PathVariable Integer userId){			// Add the orders from cart
+		return new ResponseEntity<Cart>(orderService.addOrdersFromCart(userId),HttpStatus.OK);
 	}
 
 	@PutMapping("/{orderID}")
-	public ResponseEntity<Orders> updateOrders(@PathVariable Integer orderID) {
-		return new ResponseEntity<Orders>(orderServiceInteface.updateOrders(orderID),HttpStatus.OK);
+	public ResponseEntity<Orders> updateExistingOrder(@PathVariable Integer orderID) {				// update the orders
+		return new ResponseEntity<Orders>(orderService.updateOrders(orderID),HttpStatus.OK);
 	}
 
 	@DeleteMapping("/{orderId}")
-	public ResponseEntity<Orders> deleteOrders(@PathVariable Integer orderId){
-		return new ResponseEntity<Orders>(orderServiceInteface.deleteOrders(orderId),HttpStatus.OK);
+	public ResponseEntity<Orders> deleteOrder(@PathVariable Integer orderId){				// Delete the orders
+		return new ResponseEntity<Orders>(orderService.deleteOrders(orderId),HttpStatus.OK);
 	}
 
 	@GetMapping("/{orderId}")
-	public ResponseEntity<Orders> viewOrder(@PathVariable Integer orderId){
-		return new ResponseEntity<Orders>(orderServiceInteface.viewOrder(orderId),HttpStatus.OK);
+	public ResponseEntity<Orders> viewOrder(@PathVariable Integer orderId){					// View  order by id
+		return new ResponseEntity<Orders>(orderService.viewOrder(orderId),HttpStatus.OK);
 	}
 
 	@GetMapping("/allOrders/{userId}")
-	public ResponseEntity<List<Orders>> viewAllOrders(@PathVariable Integer userId){
-		return new ResponseEntity<List<Orders>>(orderServiceInteface.viewAllOrders(userId),HttpStatus.OK);
+	public ResponseEntity<List<Orders>> viewAllOrders(@PathVariable Integer userId){			// view all the orders
+		return new ResponseEntity<List<Orders>>(orderService.viewAllOrders(userId),HttpStatus.OK);
 	}
 }

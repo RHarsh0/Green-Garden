@@ -49,41 +49,41 @@ public class AdminProductController {
 	}
 
 	@PostMapping("/plant")
-	public ResponseEntity<Product> createPlant(@RequestBody Plant plant) {
+	public ResponseEntity<Product> createPlant(@RequestBody Plant plant) {                                 // Add new plant
 		return new ResponseEntity<Product>(productService.createProduct(plant), HttpStatus.CREATED);
 	}
 
 	@PostMapping("/seed")
-	public ResponseEntity<Product> createSeed(@RequestBody Seed seed) {
+	public ResponseEntity<Product> createSeed(@RequestBody Seed seed) {				      // Add new seed
 		return new ResponseEntity<Product>(productService.createProduct(seed), HttpStatus.CREATED);
 	}
 
 	@DeleteMapping("/product/{productId}")
-	public ResponseEntity<ApiResponse> deleteProduct(@PathVariable Integer productId) {
-		ApiResponse apiResponse = new ApiResponse(productService.deleteProductId(productId), true);
+	public ResponseEntity<ApiResponse> deleteProductByProductID(@PathVariable Integer productId) { 		     // Delete a product
+		ApiResponse apiResponse = new ApiResponse(productService.deleteProductById(productId), true);
 		return new ResponseEntity<ApiResponse>(apiResponse, HttpStatus.OK);
 	}
 
 	@GetMapping("/products/all")
-	public ResponseEntity<List<Product>> findAllProducts() {
+	public ResponseEntity<List<Product>> findAllProducts() {                                             //get the list of all products available
 		List<Product> products = productService.allProdcuts();
 		return new ResponseEntity<List<Product>>(products, HttpStatus.OK);
 	}
 
 	@GetMapping("/plants")
-	public ResponseEntity<List<Product>> getAllPlant() {
+	public ResponseEntity<List<Product>> getAllPlant() {                    			    // get the list of all plants
 		List<Product> products = productService.getAllPlants();
 		return new ResponseEntity<List<Product>>(products, HttpStatus.OK);
 	}
 
 	@GetMapping("/seeds")
-	public ResponseEntity<List<Product>> getAllSeed() {
+	public ResponseEntity<List<Product>> getAllSeed() {                                                // get the list of all the seeds
 		List<Product> products = productService.getAllSeeds();
 		return new ResponseEntity<List<Product>>(products, HttpStatus.OK);
 	}
 	
 	@GetMapping("/planters")
-	public ResponseEntity<List<Planter>> viewAllPlanter(
+	public ResponseEntity<List<Planter>> viewAllPlanter(						  // get the list of all planters
 			@RequestParam(defaultValue = "0", required = false) Integer page,
 			@RequestParam(defaultValue = "10", required = false) Integer size,
 			@RequestParam(required = false) Map<String,String> map) {
@@ -92,12 +92,12 @@ public class AdminProductController {
 
 	
 	@PostMapping("/planter")
-	public ResponseEntity<Planter> addPlanter(@Valid @RequestBody Planter planter) {
+	public ResponseEntity<Planter> addPlanter(@Valid @RequestBody Planter planter) {		   // add a new planter
 		return new ResponseEntity<Planter>(planterService.addPlanter(planter), HttpStatus.CREATED);
 	}
 
 	@PutMapping("/planters")
-	public ResponseEntity<Planter> updatePlanter(@RequestBody PlanterDto planter) {
+	public ResponseEntity<Planter> updatePlanter(@RequestBody PlanterDto planter) {			  // update the details of a planter
 		return new ResponseEntity<Planter>(planterService.updatePlanter(planter), HttpStatus.CREATED);
 	}
 	

@@ -18,7 +18,7 @@ import com.example.model.Review;
 import com.example.service.ReviewService;
 
 @RestController
-public class ReviewController {
+public class ReviewController {                    // the review controller
 
     private  ReviewService reviewService;
 
@@ -28,7 +28,7 @@ public class ReviewController {
     }
 
     @PostMapping("/reviews")
-    public ResponseEntity<Review> createReview(@RequestBody Review review) {
+    public ResponseEntity<Review> createReview(@RequestBody Review review) {             // create a review
          Review createdReview =reviewService.createReview(review);
          
          return new ResponseEntity<Review>(createdReview, HttpStatus.CREATED);
@@ -36,7 +36,7 @@ public class ReviewController {
     }
 
     @GetMapping("/reviews/{id}")
-    public ResponseEntity<List<Review>> getReviewById(@PathVariable Integer id) {
+    public ResponseEntity<List<Review>> getReviewById(@PathVariable Integer id) {        // view the review using id
         Optional<Review>review = reviewService.getReviewById(id);
         
         if (review.isPresent()) {
@@ -48,7 +48,7 @@ public class ReviewController {
     
     
     @GetMapping("/reviews/product/{productId}")
-    public ResponseEntity<List<Review>> getReviewsByProductId(@PathVariable Integer productId) {
+    public ResponseEntity<List<Review>> getReviewsByProductId(@PathVariable Integer productId) {            // view the review by product id
 
     	List<Review> reviews = reviewService.getReviewsByProductId(productId);
         
@@ -57,7 +57,7 @@ public class ReviewController {
     }
 
     @GetMapping("/reviews/user/{userId}")
-    public ResponseEntity<List<Review>> getReviewsByUserId(@PathVariable Integer userId) {
+    public ResponseEntity<List<Review>> getReviewsByUserId(@PathVariable Integer userId) {                //view the review by user id
 
     	List<Review> reviews = reviewService.getReviewsByUserId(userId);
    
@@ -67,7 +67,7 @@ public class ReviewController {
     }
 
     @DeleteMapping("/reviews/{id}")
-    public ResponseEntity<String> deleteReview(@PathVariable Integer id) {
+    public ResponseEntity<String> deleteReview(@PathVariable Integer id) {                                // delete the review by id
             
             return new ResponseEntity<String>(reviewService.deleteReview(id),HttpStatus.NO_CONTENT);
        

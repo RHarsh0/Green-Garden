@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-public class RatingController {
+public class RatingController {					//  To perfrom CRUD operation on rating
 
 	private RatingService ratingService;
 
@@ -21,7 +21,7 @@ public class RatingController {
 	}
 
 	@PostMapping("/ratings")
-	public ResponseEntity<Rating> createRating(@RequestBody Rating rating) {
+	public ResponseEntity<Rating> createRating(@RequestBody Rating rating) {			// Provide rating
 		Rating createdRating = ratingService.createRating(rating);
 
 		return new ResponseEntity<Rating>(createdRating, HttpStatus.CREATED);
@@ -29,7 +29,7 @@ public class RatingController {
 	}
 
 	@GetMapping("/ratings/{id}")
-	public ResponseEntity<List<Rating>> getRatingById(@PathVariable Integer id) {
+	public ResponseEntity<List<Rating>> getRatingById(@PathVariable Integer id) {			// View rating by id
 		Optional<Rating> rating = ratingService.getRatingById(id);
 
 		if (rating.isPresent()) {
@@ -41,7 +41,7 @@ public class RatingController {
 	}
 
 	@GetMapping("/ratings/product/{productId}")
-	public ResponseEntity<List<Rating>> getRatingsByProductId(@PathVariable Integer productId) {
+	public ResponseEntity<List<Rating>> getRatingsByProductId(@PathVariable Integer productId) {		// get the rating of a product by using productid
 
 		List<Rating> ratings = ratingService.getRatingsByProductId(productId);
 
@@ -50,7 +50,7 @@ public class RatingController {
 	}
 
 	@GetMapping("/ratings/user/{userId}")
-	public ResponseEntity<List<Rating>> getRatingsByUserId(@PathVariable Integer userId) {
+	public ResponseEntity<List<Rating>> getRatingsByUserId(@PathVariable Integer userId) {			//get rating of user by user id
 
 		List<Rating> ratings = ratingService.getRatingsByUserId(userId);
 
@@ -59,7 +59,7 @@ public class RatingController {
 	}
 	
 	 @DeleteMapping("/ratings/{id}")
-	    public ResponseEntity<String> deleteRating(@PathVariable Integer id) {
+	    public ResponseEntity<String> deleteRating(@PathVariable Integer id) {				// delete the rating
 	            
 	            return new ResponseEntity<String>(ratingService.deleteRating(id),HttpStatus.NO_CONTENT);
 	       

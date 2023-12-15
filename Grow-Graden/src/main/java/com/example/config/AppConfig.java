@@ -5,7 +5,6 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.Arrays;
 import java.util.Collections;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -22,7 +21,7 @@ import jakarta.servlet.http.HttpServletRequest;
 public class AppConfig {
 	
 	@Bean
-	public SecurityFilterChain securityFilterChain(HttpSecurity http)throws Exception{
+	 public SecurityFilterChain securityFilterChain(HttpSecurity http)throws Exception{
 		
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
 		.authorizeHttpRequests(Authorize-> Authorize.requestMatchers("/admin/**").authenticated().anyRequest().permitAll())

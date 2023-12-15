@@ -32,12 +32,12 @@ public class AuthController {
 	}
 
 	@PostMapping("/signup")
-	public ResponseEntity<AuthResponse> createUserHandler(@RequestBody User user) throws UserException{
+	public ResponseEntity<AuthResponse> createNewUser(@RequestBody User user) throws UserException{
 		return new ResponseEntity<AuthResponse>(userService.createUser(user),HttpStatus.CREATED);		 
 	}
 	
 	@PostMapping("/signin")
-	public ResponseEntity<AuthResponse> loginUserHandler(@RequestBody LoginRequest logingRequest){
+	public ResponseEntity<AuthResponse> loginToExistingUserAccount(@RequestBody LoginRequest logingRequest){
 		return new ResponseEntity<AuthResponse>(userService.userLogin(logingRequest),HttpStatus.OK );
 	}
 	

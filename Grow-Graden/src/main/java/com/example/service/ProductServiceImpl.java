@@ -48,7 +48,7 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public String deleteProductId(Integer productId) throws ProductException {
+	public String deleteProductById(Integer productId) throws ProductException {
 		// TODO Auto-generated method stub
 		Optional<Product> optional = productRepository.findById(productId);
 
@@ -70,12 +70,6 @@ public class ProductServiceImpl implements ProductService {
 			productPresent.setQuantity(requestProduct.getQuantity());
 
 		return productRepository.save(productPresent);
-	}
-
-	@Override
-	public List<Product> findProductByCategory(String category) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override

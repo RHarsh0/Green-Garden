@@ -18,7 +18,7 @@ public class PlanterDto {
 	private Double planterCost;
 	private String planterImageUrl;
 	
-	/**
+	 /**
 	 * {
 	        "planterId": 7,
 	        "planterHeight": 70.0,
